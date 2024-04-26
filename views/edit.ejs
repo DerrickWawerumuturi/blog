@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Blog</title>
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>
+                <%= heading %>
+            </h1>
+
+            <% if (locals.post) { %>
+            <form id="editForm" method="post" action="/api/posts/<%=post.id%>">
+                <input type="text" name="title" value="<%=post.title %>">
+                <textarea name="content" rows="10"><%= post.content %></textarea>
+                <input type="text" name="author" value="<%=post.author %>">
+                <button class="full-width" type="submit">
+                    <%= submit %>
+                </button>
+            </form>
+            <% } else { %>
+                <form id="newPostForm" method="post" action="/api/posts">
+                    <input type="text" name="title" placeholder="TItle" required>
+                    <textarea name="content" placeholder="Content" required rows="10"></textarea>
+                    <input type="author" name="author" placeholder="Author" required>
+                    <button class="full-width" type="submit">
+                        <%= submit %>
+                    </button>
+                </form>
+            <% } %>
+            </form>
+        </div>
+    </body>
+</html>
